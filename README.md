@@ -4,5 +4,6 @@
  - [] Cadastrar
  - [] Entrada e Saída
 
--[] Lista de Compras 
+-[] Lista de Compras
+
 -[] Fila de Espera
