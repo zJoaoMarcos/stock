@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form } from '@unform/web';
-import { auth } from '../../../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import Input from './Form/Input';
+import Input from '../../Components/Form/Input';
 
 export default function Login() {
+
+    let navigate = useNavigate();
     
     function handleSubmit(data) {
 
@@ -15,7 +18,8 @@ export default function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        alert(user.email)
+        alert(user.email);
+        navigate('/home');
         // ...
       })
       .catch((error) => {
@@ -25,16 +29,13 @@ export default function Login() {
       });
 
     }
-
-
-    
     
     return (
         <div>
             <h2>Login</h2>
 
             <Form onSubmit={handleSubmit}>
-                <Input name="email" />
+                <Input name="email"  type="email"/>
                 <Input name="password" type="password"/>
 
                 <button type='submit'>Enviar</button>
