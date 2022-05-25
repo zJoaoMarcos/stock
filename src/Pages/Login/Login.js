@@ -1,45 +1,33 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { Form } from '@unform/web';
-import { auth } from '../../firebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import Input from '../../Components/Form/Input';
+import { AuthLoginContext } from '../../Contexts/AuthLogin';
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
+  const { signInFirebase, signed } = useContext(AuthLoginContext);
+  
+  async function handleLogin(data) {
 
-    let navigate = useNavigate();
+    const email = data.email;
+    const password = data.password;
     
-    function handleSubmit(data) {
+    await signInFirebase(email, password);
+  }
+  if (!signed) {
+  return (
+      <div>
+          <h2>Login</h2>
 
-        const email = data.email;
-        const password = data.password;
-        
-        signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        alert(user.email);
-        navigate('/home');
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage, errorCode);
-      });
+          <Form onSubmit={handleLogin}>
+              <Input name="email"  type="email" required/>
+              <Input name="password" type="password" required/>
 
-    }
-    
-    return (
-        <div>
-            <h2>Login</h2>
-
-            <Form onSubmit={handleSubmit}>
-                <Input name="email"  type="email"/>
-                <Input name="password" type="password"/>
-
-                <button type='submit'>Enviar</button>
-            </Form>
-        </div>
+              <button type='submit'>Enviar</button>
+          </Form>
+      </div>
     );
-}
+  } else {
+    return <Navigate to="/home" />
+  }
+};
