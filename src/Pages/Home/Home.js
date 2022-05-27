@@ -11,7 +11,7 @@ export default function Home() {
             <h2>Wellcome to HomePage: {userLogado.email}</h2>
 
             <button onClick={() => navigate('/register')}>Cadastrar Item</button>
-            <button onClick={() => navigate('/insumos')}>Insumos</button>
+            <button onClick={() => navigate('/stock')}>Estoque</button>
             <button onClick={() => signOut()}>Sair</button>
         </div>
     );

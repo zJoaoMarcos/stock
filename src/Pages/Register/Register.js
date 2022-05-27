@@ -28,7 +28,7 @@ export default function Register() {
             type: tipo
         });
         console.log("Document written with ID: ", docRef.id )
-        navigate('/home')
+        navigate('/stock')
         
     }
     
