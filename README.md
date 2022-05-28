@@ -1,7 +1,7 @@
 ## STOCK TASKS
 
 -[] Stock Moviments
- - [] Cadastrar
+ - [X] Cadastrar
  - [] Entrada e Saída
 
 -[] Lista de Compras
