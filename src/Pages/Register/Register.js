@@ -17,31 +17,30 @@ export default function Register() {
         
         const tipo = data.type
         const descricao = data.description
-        const estoque = data.stock
-        const estoqueMin = data.stockMin
+        const estoque = Number(data.stock)
+        const estoqueMin = Number(data.stockMin)
         
         // Add a new document with a generated id.
-        const docRef =  addDoc(collection(db, "insumos"), {
+        const docRef =  addDoc(collection(db, "estoque"), {
             description: descricao,
             stock: estoque,
             stockMin: estoqueMin,
             type: tipo
         });
         console.log("Document written with ID: ", docRef.id )
-        navigate('/stock')
+        navigate('/stock');
         
     }
-    
     
     return (
         <div>
             <h2>Cadastre um item</h2>
 
             <Form onSubmit={handleRegister}>
-                <Input name="type" required placeholder="Tipos"/>
-                <Input name="description" required placeholder="Descrição"/>
-                <Input name="stock" required placeholder="Estoque"/>
-                <Input name="stockMin" required placeholder="EstoqueMin"/>
+                <Input name="type" type="text" required placeholder="Tipos"/>
+                <Input name="description" type="text" required placeholder="Descrição"/>
+                <Input name="stock" type="number" required placeholder="Estoque"/>
+                <Input name="stockMin" type="number" required placeholder="EstoqueMin"/>
 
                 <button type="submit">Cadastrar</button>
             </Form>
