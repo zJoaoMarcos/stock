@@ -12,6 +12,7 @@ export default function Home() {
 
             <button onClick={() => navigate('/register')}>Cadastrar Item</button>
             <button onClick={() => navigate('/stock')}>Estoque</button>
+            <button onClick={() => navigate('/shop')}>Lista de Compras</button>
             <button onClick={() => signOut()}>Sair</button>
         </div>
     );

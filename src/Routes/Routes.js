@@ -6,7 +6,8 @@ import {
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Register from '../Pages/Register/Register';
-import Stock from  '../Pages/Stock/Stock'
+import Stock from  '../Pages/Stock/Stock';
+import Shop from  '../Pages/Shop/Shop';
 import { PrivateRoutes } from './Index';
 
 export default function MainRoutes() {
@@ -22,6 +23,9 @@ export default function MainRoutes() {
                 </Route>
                 <Route path="/stock" element={<PrivateRoutes />}>
                     <Route path="/stock" element={<Stock />} />
+                </Route>
+                <Route path="/shop" element={<PrivateRoutes />}>
+                    <Route path="/shop" element={<Shop />} />
                 </Route>
             </Fragment>
         </Routes>
