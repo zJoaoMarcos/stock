@@ -11,13 +11,10 @@ export default function Stock() {
     
     const [items, setItems]= useState([]);
     
-    useEffect(
-        () =>
-            onSnapshot(collection(db, "estoque"), (data) => 
-                setItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-            ),
-        []
-    );
+    useEffect(() => {
+        onSnapshot(collection(db, "estoque"), (data) => 
+        setItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    )},[]);
 
     async function deleteItem (id) {
         const itemDoc = doc(db, "estoque", id);
