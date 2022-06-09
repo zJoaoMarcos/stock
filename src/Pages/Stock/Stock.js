@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { getFirestore, collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { app } from "../../firebaseConfig";
 
 
@@ -11,16 +11,18 @@ export default function Stock() {
     
     const [items, setItems]= useState([]);
     
-    useEffect(() => {
-       const fetchItems = async () => {
-        const collectionRef = collection(db, "estoque");
-        const data = await getDocs(collectionRef);
-        setItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-       };
-       fetchItems();
-    }, [])
+    useEffect(
+        () =>
+            onSnapshot(collection(db, "estoque"), (data) => 
+                setItems(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+            ),
+        []
+    );
 
-
+    async function deleteItem (id) {
+        const itemDoc = doc(db, "estoque", id);
+        await deleteDoc(itemDoc);
+    }
     
     return (
         <div>
@@ -31,7 +33,13 @@ export default function Stock() {
                     {items.map(item => {
                         return (
                             <div key={item.id}>
-                                <li>Tipo: {item.type}, Descrição: {item.description}, Estoque Atual: {item.stock}, Estoque Minimo: {item.stockMin}</li>
+                                <li>
+                                    Tipo: {item.type}, 
+                                    Descrição: {item.description}, 
+                                    Estoque Atual: {item.stock}, 
+                                    Estoque Minimo: {item.stockMin}
+                                    <button onClick={() => deleteItem(item.id)}>Deletar</button>
+                                </li>
                             </div>
                         )
                     })}
