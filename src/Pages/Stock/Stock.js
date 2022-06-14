@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFirestore, collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, doc, deleteDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { app } from "../../firebaseConfig";
-
+import ButtonUpdate from "../../Components/Popup/Update.js";
 
 export default function Stock() {
 
@@ -21,6 +21,14 @@ export default function Stock() {
         await deleteDoc(itemDoc);
     }
     
+    const updateItem = async (id, stock) => {
+        const itemDoc = doc(db, "estoque", id);
+
+        const newItems = {stock: stock};
+        await updateDoc(itemDoc, newItems);
+    };
+
+
     return (
         <div>
             <h1>Estoque</h1>
@@ -36,6 +44,8 @@ export default function Stock() {
                                     Estoque Atual: {item.stock}, 
                                     Estoque Minimo: {item.stockMin}
                                     <button onClick={() => deleteItem(item.id)}>Deletar</button>
+                                    <ButtonUpdate description={item.description} id={item.id}
+                                    stock={item.stock} update={updateItem}/>
                                 </li>
                             </div>
                         )
