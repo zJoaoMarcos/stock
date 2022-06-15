@@ -6,8 +6,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { Form  } from '@unform/web';
+import { Form } from '@unform/web';
 import Input from '../Form/Input';
+import Select from '../Form/Select';
 
 export default function ButtonUpdate(props) {
   const [open, setOpen] = React.useState(false);
@@ -20,32 +21,54 @@ export default function ButtonUpdate(props) {
     setOpen(false);
   };
 
+  const selectOptions = [
+    { value: 'entrada', label: 'Entrada' },
+    { value: 'saida', label: 'Saída' }
+  ]
 
-  
+
   const handleUpdate = (data) => {
-    
+    const stockCurrent = props.stockCurrent
     const id = props.id
-    const stock = data.stock
 
-    props.update(id, stock)
+    const stock = Number(data.stock)
+    const movement = data.movement
+
+    if (movement === "entrada") {
+      props.inputStock(id, stock, stockCurrent)
+    } else {
+      props.outputStock(id, stock, stockCurrent)
+    }
     setOpen(false);
   }
 
-  
 
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
         Movimento
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose}>S
         <DialogTitle>Movimento</DialogTitle>
         <DialogContent>
           <DialogContentText>
             {props.description}
           </DialogContentText>
           <Form onSubmit={handleUpdate}>
-            <Input name="stock" type="number" required placeholder="Quantidade"/>
+            <Input name="stock" type="number" required placeholder="Quantidade" />
+            <Input name="technician" type="text" required placeholder="Técnico" />
+
+            <Select
+              name="movement"
+              label="Tipo de Movimento"
+              options={selectOptions} >
+              {selectOptions.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+
             <button type="submit">Registrar</button>
           </Form>
         </DialogContent>

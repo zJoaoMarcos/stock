@@ -8,15 +8,16 @@ export default function Shop() {
 
     const navigate = useNavigate();
     const db = getFirestore(app);
-    
-    const [purchases, setPurchases]= useState([]);
+
+    const [purchases, setPurchases] = useState([]);
     
     useEffect(() => {
         const q = query(collection(db, "estoque"), where("stock", "<=", 5));
-        onSnapshot(q, (data) => 
-        setPurchases(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    )},[]);
-    
+        onSnapshot(q, (data) =>
+            setPurchases(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        )
+    }, []);
+
 
     return (
         <div>
@@ -28,9 +29,9 @@ export default function Shop() {
                         return (
                             <div key={item.id}>
                                 <li>
-                                    Tipo: {item.type}, 
-                                    Descrição: {item.description}, 
-                                    Estoque Atual: {item.stock}, 
+                                    Tipo: {item.type},
+                                    Descrição: {item.description},
+                                    Estoque Atual: {item.stock},
                                     Estoque Minimo: {item.stockMin}
                                 </li>
                             </div>
