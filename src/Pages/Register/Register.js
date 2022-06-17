@@ -27,7 +27,7 @@ export default function Register() {
             stockMin: estoqueMin,
             type: tipo
         });
-        console.log("Document written with ID: ", docRef.id )
+        alert("Item registrado com sucesso!! ", docRef.description)
         navigate('/stock');
         
     }
