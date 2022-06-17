@@ -26,18 +26,20 @@ export default function ButtonUpdate(props) {
     { value: 'saida', label: 'Saída' }
   ]
 
-
   const handleUpdate = (data) => {
     const stockCurrent = props.stockCurrent
     const id = props.id
 
     const stock = Number(data.stock)
     const movement = data.movement
+    const technician = data.technician
 
     if (movement === "entrada") {
       props.inputStock(id, stock, stockCurrent)
+      props.movement(props.description, stock, movement, technician)
     } else {
       props.outputStock(id, stock, stockCurrent)
+      props.movement(props.description, stock, movement, technician)
     }
     setOpen(false);
   }
