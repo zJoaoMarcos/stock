@@ -7,17 +7,18 @@ import { Container, Title } from './Style';
 
 export default function Login() {
   const { signInFirebase, signed } = useContext(AuthLoginContext);
-  
+  const titleForm = Login
   async function login(email, password) {
     await signInFirebase(email, password);
   }
+
   if (!signed) {
   return (
       <div>
         <Container>
-          <Title>Estoque</Title>
+          <Title>Estoque Patriani T.I </Title>
           
-          <FormLogin login={login} />
+          <FormLogin login={login} titleForm={titleForm}/>
         </Container>
       </div>
     );

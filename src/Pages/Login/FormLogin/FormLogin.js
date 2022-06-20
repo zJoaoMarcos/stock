@@ -13,8 +13,8 @@ export default function FormLogin(props) {
     return ( 
         <Form onSubmit={handleLogin}>
             <h2>Login</h2>
-            <Input name="email"  type="email" required/>
-            <Input name="password" type="password" required/>
+            <Input name="email"  type="email" placeholder="Email" required/>
+            <Input name="password" type="password" placeholder="Senha" required/>
 
             <button type='submit'>Enviar</button>
         </Form>
