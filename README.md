@@ -1,9 +1,10 @@
 ## STOCK TASKS
 
--[] Stock Moviments
+-[x] Stock Moviments
  - [X] Cadastrar
- - [] Entrada e Saída
+ - [x] Entrada e Saída
 
 -[] Lista de Compras
+ -[] Melhorar a Query no Firebase
 
 -[] Fila de Espera
