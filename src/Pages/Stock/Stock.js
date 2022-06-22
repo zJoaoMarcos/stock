@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getFirestore, collection, doc, deleteDoc, onSnapshot, updateDoc, addDoc } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 import { app } from "../../firebaseConfig";
-import ButtonUpdate from "../../Components/Popup/Update.js";
+import Header from "../../Components/Navbar/Navbar";
+import TableStock from "../../Components/Table/TableStock";
+import { Container } from "./Style";
 
 export default function Stock() {
 
-    const navigate = useNavigate();
     const db = getFirestore(app);
 
     const [items, setItems] = useState([]);
@@ -17,65 +17,18 @@ export default function Stock() {
         )
     }, []);
 
-    async function deleteItem(id) {
-        const itemDoc = doc(db, "estoque", id);
-        await deleteDoc(itemDoc);
-    }
-
-    const inputStock = async (id, stock, stockCurrent) => {
-        const itemDoc = doc(db, "estoque", id);
-
-        const newItems = { stock: Number(stockCurrent) + stock };
-        await updateDoc(itemDoc, newItems);
-    };
-
-    const outputStock = async (id, stock, stockCurrent) => {
-        const itemDoc = doc(db, "estoque", id);
-
-        const newItems = { stock: Number(stockCurrent) - stock };
-        await updateDoc(itemDoc, newItems);
-    };
-
-    const movement = async (currentItem, quantity, movement, technician) => {
-        
-        const currentDate = new Date().toLocaleString();
-        
-        await addDoc(collection(db, "movimentos"), {
-            date: currentDate,
-            item: currentItem,
-            quantity: quantity,
-            movement: movement,
-            technician: technician
-        });
-    }
-
     return (
-        <div>
+        <Container>
+            <Header />
             <h1>Estoque</h1>
 
             <div>
-                <ul>
-                    {items.map(item => {
-                        return (
-                            <div key={item.id}>
-                                <li>
-                                    Tipo: {item.type},
-                                    Descrição: {item.description},
-                                    Estoque Atual: {item.stock},
-                                    Estoque Minimo: {item.stockMin}
-                                    <button onClick={() => deleteItem(item.id)}>Deletar</button>
-                                    <ButtonUpdate description={item.description} id={item.id}
-                                        stockCurrent={item.stock} inputStock={inputStock} outputStock={outputStock} movement={movement} />
-                                </li>
-                            </div>
-                        )
-                    })}
-                </ul>
+                
+                <TableStock items={items}/>
+
             </div>
 
-            <button onClick={() => navigate('/home')}>Home</button>
-            <button onClick={() => navigate('/register')}>Cadastrar Item</button>
 
-        </div>
+        </Container>
     );
 }

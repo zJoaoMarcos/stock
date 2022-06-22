@@ -8,30 +8,6 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
-export const Header = styled.div`
-    padding: 50px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-
-    button {
-        font-size: 1.2em;
-        border-style: none;
-        outline: none;
-        background-color: transparent;
-    }
-
-    button:hover {
-        cursor: pointer;
-        font-weight: 600;
-    }
-
-    button:active {
-        color: #9c000d;
-    }
-`;
-
 export const Form = styled(Unform)`
     margin: 140px 30px;
     background-color: white;

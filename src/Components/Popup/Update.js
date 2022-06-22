@@ -1,17 +1,22 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 import { Form } from '@unform/web';
 import Input from '../Form/Input';
 import Select from '../Form/Select';
+import { StockContext } from '../../Contexts/StockFunctions';
 
 export default function ButtonUpdate(props) {
   const [open, setOpen] = React.useState(false);
+  const { inputStock, outputStock , movement } = useContext(StockContext);
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -29,17 +34,16 @@ export default function ButtonUpdate(props) {
   const handleUpdate = (data) => {
     const stockCurrent = props.stockCurrent
     const id = props.id
-
     const stock = Number(data.stock)
-    const movement = data.movement
+    const typeMovement = data.movement
     const technician = data.technician
 
-    if (movement === "entrada") {
-      props.inputStock(id, stock, stockCurrent)
-      props.movement(props.description, stock, movement, technician)
+    if (typeMovement === "entrada") {
+      inputStock(id, stock, stockCurrent);
+      movement(props.description, stock, typeMovement, technician)
     } else {
-      props.outputStock(id, stock, stockCurrent)
-      props.movement(props.description, stock, movement, technician)
+      outputStock(id, stock, stockCurrent);
+      movement(props.description, stock, typeMovement, technician)
     }
     setOpen(false);
   }
@@ -47,9 +51,8 @@ export default function ButtonUpdate(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Movimento
-      </Button>
+      <CompareArrowsIcon onClick={handleClickOpen} />
+      
       <Dialog open={open} onClose={handleClose}>S
         <DialogTitle>Movimento</DialogTitle>
         <DialogContent>

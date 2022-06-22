@@ -1,13 +1,16 @@
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthLoginProvider } from './Contexts/AuthLogin';
+import { StockProvider } from './Contexts/StockFunctions';
 import Routes from './Routes/Routes';
 
 function App() {
   return (
     <BrowserRouter>
       <AuthLoginProvider>
-        <Routes />
+        <StockProvider>
+          <Routes />
+        </StockProvider>
       </AuthLoginProvider>
     </BrowserRouter>
   );
