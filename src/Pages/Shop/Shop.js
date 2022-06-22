@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
 import { app } from "../../firebaseConfig";
-
+import { Container } from './Style';
+import Header from '../../Components/Navbar/Navbar';
+import TableShop from "../../Components/Table/TableShop";
 
 export default function Shop() {
 
-    const navigate = useNavigate();
     const db = getFirestore(app);
 
     const [purchases, setPurchases] = useState([]);
@@ -20,29 +20,16 @@ export default function Shop() {
 
 
     return (
-        <div>
+        <Container>
+
+            <Header />
+
             <h1>Lista de Compras</h1>
 
             <div>
-                <ul>
-                    {purchases.map(item => {
-                        return (
-                            <div key={item.id}>
-                                <li>
-                                    Tipo: {item.type},
-                                    Descrição: {item.description},
-                                    Estoque Atual: {item.stock},
-                                    Estoque Minimo: {item.stockMin}
-                                </li>
-                            </div>
-                        )
-                    })}
-                </ul>
+                <TableShop purchases={purchases}/>
             </div>
 
-            <button onClick={() => navigate('/home')}>Home</button>
-            <button onClick={() => navigate('/register')}>Cadastrar Item</button>
-
-        </div>
+        </Container>
     );
 }

@@ -29,7 +29,7 @@ export const StockProvider = ({ children }) => {
 
     const movement = async (currentItem, quantity, movement, technician) => {
         
-        const currentDate = new Date().toLocaleString();
+        const currentDate = new Date().toLocaleDateString();
         
         await addDoc(collection(db, "movimentos"), {
             date: currentDate,

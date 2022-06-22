@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, onSnapshot } from "firebase/firestore";
 import { app } from "../../firebaseConfig";
+import { Container } from "./Style";
+
+import TableMoviments from "../../Components/Table/TableMoviments";
+import Header from "../../Components/Navbar/Navbar";
 
 export default function Movements() {
 
@@ -17,30 +21,14 @@ export default function Movements() {
     }, []);
 
     return (
-        <div>
+        <Container>
+            <Header />
             <h1>Movimentos</h1>
 
             <div>
-                <ul>
-                    {movements.map(movement => {
-                        return (
-                            <div key={movement.id}>
-                                <li>
-                                    Movimento: {movement.movement},
-                                    Quantidade: {movement.quantity},
-                                    Item: {movement.item},
-                                    Técnico: {movement.technician},
-                                    Data: {movement.date}
-                                </li>
-                            </div>
-                        )
-                    })}
-                </ul>
+                <TableMoviments  movements={movements} />
             </div>
 
-            <button onClick={() => navigate('/home')}>Home</button>
-            <button onClick={() => navigate('/stock')}>Estoque</button>
-
-        </div>
+        </Container>
     );
 }
