@@ -9,7 +9,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-
+import { red } from '@mui/material/colors';
 import { StockContext } from '../../Contexts/StockFunctions';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -36,7 +36,7 @@ export default function ButtonDelete(props) {
   return (
     <div>
       <IconButton aria-label="delete" onClick={handleClickOpen} size="small">
-        <DeleteIcon />
+        <DeleteIcon sx={{ color: red[700] }} />
       </IconButton>
       <Dialog
         open={open}

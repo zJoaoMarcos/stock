@@ -17,7 +17,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }));
 
@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function TableStock(props) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ maxWidth: 700 }} aria-label="customized table">
+      <Table sx={{ maxWidth: 1000 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Item</StyledTableCell>

@@ -6,7 +6,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import ImportExportRoundedIcon from '@mui/icons-material/ImportExportRounded';
+import IconButton from '@mui/material/IconButton';
 
 import { Form } from '@unform/web';
 import Input from '../Form/Input';
@@ -51,7 +52,9 @@ export default function ButtonUpdate(props) {
 
   return (
     <div>
-      <CompareArrowsIcon onClick={handleClickOpen} />
+      <IconButton aria-label="delete" onClick={handleClickOpen} size="small">
+        <ImportExportRoundedIcon />
+      </IconButton>
       
       <Dialog open={open} onClose={handleClose}>S
         <DialogTitle>Movimento</DialogTitle>
