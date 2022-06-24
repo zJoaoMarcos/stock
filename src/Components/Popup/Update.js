@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import ImportExportRoundedIcon from '@mui/icons-material/ImportExportRounded';
 import IconButton from '@mui/material/IconButton';
 
-import { Form } from '@unform/web';
+import { Form } from './Style';
 import Input from '../Form/Input';
 import Select from '../Form/Select';
 import { StockContext } from '../../Contexts/StockFunctions';
@@ -56,7 +56,7 @@ export default function ButtonUpdate(props) {
         <ImportExportRoundedIcon />
       </IconButton>
       
-      <Dialog open={open} onClose={handleClose}>S
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Movimento</DialogTitle>
         <DialogContent>
           <DialogContentText>

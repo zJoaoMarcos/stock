@@ -25,6 +25,27 @@ export const Form = styled(Unform)`
         font-size: 1.6em;
     }
 
+    Select {
+        height: 30px;
+        width: 26vw;
+        margin-bottom: 25px;
+        font-size: 1em;
+        border: none;
+        border-bottom: 2px solid #9c000d;
+        @media(max-width: 768px) {
+            width: 80%;
+        }
+    }
+
+    Select:focus {
+        outline: none;
+        border-bottom: 2px solid #9c000d;
+    }
+
+    Select::placeholder {
+        font-size: 1em;
+    }
+
     Input {
         height: 30px;
         width: 80%;
