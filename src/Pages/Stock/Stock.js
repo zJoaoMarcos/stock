@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getFirestore, collection, onSnapshot } from "firebase/firestore";
-import { app } from "../../firebaseConfig";
+import { app } from "../../Services/firebaseConfig";
 import Header from "../../Components/Navbar/Navbar";
-import TableStock from "../../Components/Table/TableStock";
+import TableStock from "./TableStock";
 import { Container } from "./Style";
 
 export default function Stock() {

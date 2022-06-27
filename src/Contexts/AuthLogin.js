@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebaseConfig";
+import { app } from "../Services/firebaseConfig";
 import { Navigate } from "react-router-dom";
 
 export const AuthLoginContext = createContext({});
@@ -26,7 +26,6 @@ export const AuthLoginProvider = ({ children }) => {
         const user = userCredential.user;
         setUser(user)
         sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user));
-        alert(`${user.email} logou com sucesso!!`);
         <Navigate to="/home"/>
     })
     .catch((error) => {
@@ -41,8 +40,6 @@ export const AuthLoginProvider = ({ children }) => {
     setUser(null);
     return <Navigate to="/" />;
   }
-
-  
 
   return (
     <AuthLoginContext.Provider

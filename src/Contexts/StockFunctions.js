@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { app } from "../firebaseConfig";
+import { app } from "../Services/firebaseConfig";
 import { getFirestore ,collection, doc, updateDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 export const StockContext = createContext({});

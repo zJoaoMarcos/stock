@@ -39,8 +39,8 @@ export default function TableStock(props) {
           <TableRow>
             <StyledTableCell>Item</StyledTableCell>
             <StyledTableCell align="right">Tipo</StyledTableCell>
-            <StyledTableCell align="right">Stock</StyledTableCell>
-            <StyledTableCell align="right">StockMin</StyledTableCell>
+            <StyledTableCell align="right">Estoque</StyledTableCell>
+            <StyledTableCell align="right">EstoqueMin</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>

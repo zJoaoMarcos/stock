@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
-import { app } from "../../firebaseConfig";
+import { app } from "../../Services/firebaseConfig";
 import { Container } from './Style';
 import Header from '../../Components/Navbar/Navbar';
-import TableShop from "../../Components/Table/TableShop";
+import TableShop from "./TableShop";
 
 export default function Shop() {
 

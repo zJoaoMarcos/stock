@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, onSnapshot } from "firebase/firestore";
-import { app } from "../../firebaseConfig";
+import { app } from "../../Services/firebaseConfig";
 import { Container } from "./Style";
 
-import TableMoviments from "../../Components/Table/TableMoviments";
+import TableMoviments from "./TableMoviments";
 import Header from "../../Components/Navbar/Navbar";
 
 export default function Movements() {

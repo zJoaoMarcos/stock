@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthLoginProvider } from './Contexts/AuthLogin';
 import { StockProvider } from './Contexts/StockFunctions';

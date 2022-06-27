@@ -1,7 +1,7 @@
 import React from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import { app } from "../../firebaseConfig";
+import { app } from "../../Services/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Navbar/Navbar";
 import Input from '../../Components/Form/Input';
