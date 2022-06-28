@@ -33,7 +33,7 @@ export const Form = styled(Unform)`
         border: none;
         border-bottom: 2px solid #9c000d;
         @media(max-width: 768px) {
-            width: 80%;
+            width: 81vw;
         }
     }
 

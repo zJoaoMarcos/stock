@@ -39,14 +39,12 @@ export const Form = styled(Unform)`
 
     Select {
         height: 30px;
-        width: 170px;
+        width: 166px;
         margin-bottom: 25px;
         font-size: 1em;
         border: none;
         border-bottom: 2px solid #9c000d;
-        @media(max-width: 768px) {
-            width: 80%;
-        }
+        
     }
 
     Select:focus {
@@ -73,6 +71,7 @@ export const Form = styled(Unform)`
 
     button:hover {
         background-color: #7d000a;
+        cursor: pointer;
     }
 
     button:active {
