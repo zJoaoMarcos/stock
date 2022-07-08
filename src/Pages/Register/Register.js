@@ -15,13 +15,21 @@ export default function Register() {
 
     const selectOptions = [
         { value: 'Periférico', label: 'Periférico' },
-        { value: 'Hardware', label: 'Hardware' }
+        { value: 'Hardware', label: 'Hardware' },
+        { value: 'Equipamento', label: 'Equipamento' }
+    ]
+
+    const selectPlace = [
+        { value: '8º Andar', label: '8º Andar'},
+        { value: 'C.P.D.', label: 'C.P.D.'},
+        { value: 'VBG', label: 'VBG'}
     ]
 
     function handleRegister(data) {
 
         const type = data.type
         const descricao = data.description
+        const local = data.place
         const estoque = Number(data.stock)
         const estoqueMin = Number(data.stockMin)
 
@@ -30,6 +38,7 @@ export default function Register() {
             description: descricao,
             stock: estoque,
             stockMin: estoqueMin,
+            place: local,
             type: type
         });
         alert("Item registrado com sucesso!! ", docRef.description)
@@ -57,6 +66,16 @@ export default function Register() {
                 <Input name="description" type="text" required placeholder="Descrição" />
                 <Input name="stock" type="number" required placeholder="Estoque" />
                 <Input name="stockMin" type="number" required placeholder="Estoque Minimo" />
+                <Select
+                name="place"
+                label="Local"
+                options={selectPlace} >
+                {selectPlace.map(option => (
+                    <option key={option.value} value={option.value}>
+                    {option.label}
+                    </option>
+                ))}
+                </Select>
 
                 <button type="submit">Cadastrar</button>
             </Form>

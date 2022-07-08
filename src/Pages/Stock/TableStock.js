@@ -40,7 +40,7 @@ export default function TableStock(props) {
             <StyledTableCell>Item</StyledTableCell>
             <StyledTableCell align="right">Tipo</StyledTableCell>
             <StyledTableCell align="right">Estoque</StyledTableCell>
-            <StyledTableCell align="right">EstoqueMin</StyledTableCell>
+            <StyledTableCell align="right">Local</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
@@ -53,7 +53,7 @@ export default function TableStock(props) {
               </StyledTableCell>
               <StyledTableCell align="right">{item.type}</StyledTableCell>
               <StyledTableCell align="right">{item.stock}</StyledTableCell>
-              <StyledTableCell align="right">{item.stockMin}</StyledTableCell>
+              <StyledTableCell align="right">{item.place}</StyledTableCell>
               <StyledTableCell align="right"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id}/></StyledTableCell>
               <StyledTableCell align="right"><ButtonDelete description={item.description} id={item.id}/></StyledTableCell>
             </StyledTableRow>
