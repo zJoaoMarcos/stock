@@ -9,6 +9,7 @@ import Register from '../Pages/Register/Register';
 import Stock from  '../Pages/Stock/Stock';
 import Shop from  '../Pages/Shop/Shop';
 import Movements from '../Pages/Movements/Movements';
+import Printers from '../Pages/Printers/Printers';
 import { PrivateRoutes } from './Index';
 
 export default function MainRoutes() {
@@ -30,6 +31,9 @@ export default function MainRoutes() {
                 </Route>
                 <Route path="/movements" element={<PrivateRoutes />}>
                     <Route path="/movements" element={<Movements />} />
+                </Route>
+                <Route path="/printers" element={<PrivateRoutes />}>
+                    <Route path="/printers" element={<Printers />} />
                 </Route>
             </Fragment>
         </Routes>
