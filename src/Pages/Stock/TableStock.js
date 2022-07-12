@@ -31,6 +31,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+const dataBase = "estoque";
+
 export default function TableStock(props) {
   return (
     <TableContainer component={Paper}>
@@ -55,7 +57,7 @@ export default function TableStock(props) {
               <StyledTableCell align="right">{item.stock}</StyledTableCell>
               <StyledTableCell align="right">{item.place}</StyledTableCell>
               <StyledTableCell align="right"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id}/></StyledTableCell>
-              <StyledTableCell align="right"><ButtonDelete description={item.description} id={item.id}/></StyledTableCell>
+              <StyledTableCell align="right"><ButtonDelete description={item.description} id={item.id} dataBase={dataBase}/></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

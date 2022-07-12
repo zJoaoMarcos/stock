@@ -13,19 +13,21 @@ export const StockProvider = ({ children }) => {
         await deleteDoc(itemDoc);
     }
     
-    const inputStock = async (id, stock, stockCurrent) => {
-        const itemDoc = doc(db, "estoque", id);
+    const inputStock = async (baseName, id, stock, stockCurrent) => {
+        const itemDoc = doc(db, baseName, id);
 
         const newItems = { stock: Number(stockCurrent) + stock };
         await updateDoc(itemDoc, newItems);
     };
 
-    const outputStock = async (id, stock, stockCurrent) => {
-        const itemDoc = doc(db, "estoque", id);
+    const outputStock = async (baseName, id, stock, stockCurrent) => {
+        const itemDoc = doc(db, baseName, id);
 
         const newItems = { stock: Number(stockCurrent) - stock };
         await updateDoc(itemDoc, newItems);
     };
+
+    
 
     const movement = async (currentItem, quantity, movement, technician) => {
         

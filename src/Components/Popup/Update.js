@@ -38,12 +38,13 @@ export default function ButtonUpdate(props) {
     const stock = Number(data.stock)
     const typeMovement = data.movement
     const technician = data.technician
+    const dataBase = props.dataBase
 
     if (typeMovement === "entrada") {
-      inputStock(id, stock, stockCurrent);
+      inputStock(dataBase, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
     } else {
-      outputStock(id, stock, stockCurrent);
+      outputStock(dataBase, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
     }
     setOpen(false);

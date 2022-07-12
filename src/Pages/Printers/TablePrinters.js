@@ -30,6 +30,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+const dataBase = "impressoras";
+
 export default function TablePrinters(props) {
   return (
     <TableContainer component={Paper}>
@@ -52,7 +54,7 @@ export default function TablePrinters(props) {
               <StyledTableCell align="left">{printer.printer}</StyledTableCell>
               <StyledTableCell align="left">{printer.color}</StyledTableCell>
               <StyledTableCell align="center">{printer.stock}</StyledTableCell>
-              <StyledTableCell align="right"><ButtonUpdate stockCurrent={printer.stock} description={printer.type + printer.color + printer.printer} id={printer.id}/></StyledTableCell>
+              <StyledTableCell align="right"><ButtonUpdate stockCurrent={printer.stock} description={printer.type + printer.color + printer.printer} id={printer.id} dataBase={dataBase}/></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
