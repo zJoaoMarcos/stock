@@ -35,9 +35,9 @@ export default function TableShop(props) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Item</StyledTableCell>
-            <StyledTableCell align="right">Tipo</StyledTableCell>
-            <StyledTableCell align="right">Estoque</StyledTableCell>
-            <StyledTableCell align="right">Estoque Min</StyledTableCell>
+            <StyledTableCell align="center">Tipo</StyledTableCell>
+            <StyledTableCell align="center">Estoque</StyledTableCell>
+            <StyledTableCell align="center">Estoque Min</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,9 +46,9 @@ export default function TableShop(props) {
               <StyledTableCell component="th" scope="row">
                 {purchase.description}
               </StyledTableCell>
-              <StyledTableCell align="right">{purchase.type}</StyledTableCell>
-              <StyledTableCell align="right">{purchase.stock}</StyledTableCell>
-              <StyledTableCell align="right">{purchase.stockMin}</StyledTableCell>
+              <StyledTableCell align="center">{purchase.type}</StyledTableCell>
+              <StyledTableCell align="center">{purchase.stock}</StyledTableCell>
+              <StyledTableCell align="center">{purchase.stockMin}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

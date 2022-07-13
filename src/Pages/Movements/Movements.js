@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { app } from "../../Services/firebaseConfig";
 import { Container } from "./Style";
@@ -9,7 +8,6 @@ import Header from "../../Components/Navbar/Navbar";
 
 export default function Movements() {
 
-    const navigate = useNavigate();
     const db = getFirestore(app);
 
     const [movements, setMovements] = useState([]);

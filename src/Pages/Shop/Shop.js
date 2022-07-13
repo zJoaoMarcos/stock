@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { app } from "../../Services/firebaseConfig";
 import { Container } from './Style';
 import Header from '../../Components/Navbar/Navbar';
@@ -11,12 +11,21 @@ export default function Shop() {
 
     const [purchases, setPurchases] = useState([]);
     
+    
     useEffect(() => {
-        const q = query(collection(db, "estoque"), where("stock", "<=", 5));
-        onSnapshot(q, (data) =>
-            setPurchases(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        )
-    }, []);
+        const q = query(collection(db, "estoque"), orderBy("stock", "desc"));
+        const search = onSnapshot(q, (snapshot) => {
+            let purchasesArray = [];
+            snapshot.forEach((doc) => {
+                purchasesArray.push({ ...doc.data(), id: doc.id });
+            });
+            const shop = purchasesArray.filter(item => item.stock <= item.stockMin)
+
+            console.log(shop)
+            setPurchases(shop);
+        });
+        return () => search();
+        }, []);
 
 
     return (
