@@ -34,23 +34,23 @@ export default function TableMoviments(props) {
       <Table /* sx={{ minWidth: 200 }} */ aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Movimento</StyledTableCell>
-            <StyledTableCell align="right">Item</StyledTableCell>
-            <StyledTableCell align="right">Quant.</StyledTableCell>
-            <StyledTableCell align="right">Técnico</StyledTableCell>
-            <StyledTableCell align="right">Data</StyledTableCell>
+            <StyledTableCell>Data</StyledTableCell>
+            <StyledTableCell align="center">Movimento</StyledTableCell>
+            <StyledTableCell align="left">Item</StyledTableCell>
+            <StyledTableCell align="center">Quant.</StyledTableCell>
+            <StyledTableCell align="center">Técnico</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.movements.map((movement) => (
             <StyledTableRow key={movement.id}>
               <StyledTableCell component="th" scope="row">
-                {movement.movement}
+                {movement.date}
               </StyledTableCell>
-              <StyledTableCell align="right">{movement.item}</StyledTableCell>
-              <StyledTableCell align="right">{movement.quantity}</StyledTableCell>
-              <StyledTableCell align="right">{movement.technician}</StyledTableCell>
-              <StyledTableCell align="right">{movement.date}</StyledTableCell>
+              <StyledTableCell align="center">{movement.movement}</StyledTableCell>
+              <StyledTableCell align="left">{movement.item}</StyledTableCell>
+              <StyledTableCell align="center">{movement.quantity}</StyledTableCell>
+              <StyledTableCell align="center">{movement.technician}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

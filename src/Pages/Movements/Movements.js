@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { app } from "../../Services/firebaseConfig";
 import { Container } from "./Style";
 
@@ -15,9 +15,15 @@ export default function Movements() {
     const [movements, setMovements] = useState([]);
 
     useEffect(() => {
-        onSnapshot(collection(db, "movimentos"), (data) =>
-            setMovements(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        )
+    const q = query(collection(db, "movimentos"), orderBy("date", "asc"));
+    const search = onSnapshot(q, (snapshot) => {
+        let movementsArray = [];
+        snapshot.forEach((doc) => {
+            movementsArray.push({ ...doc.data(), id: doc.id });
+        });
+        setMovements(movementsArray);
+    });
+    return () => search();
     }, []);
 
     return (
