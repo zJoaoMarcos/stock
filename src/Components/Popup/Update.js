@@ -48,6 +48,7 @@ export default function ButtonUpdate(props) {
       await outputStock(dbName, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
     }
+    setOpen(false);
   }
 
 
