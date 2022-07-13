@@ -32,22 +32,22 @@ export default function ButtonUpdate(props) {
     { value: 'saida', label: 'Saída' }
   ]
 
-  const handleUpdate = (data) => {
-    const stockCurrent = props.stockCurrent
-    const id = props.id
-    const stock = Number(data.stock)
-    const typeMovement = data.movement
-    const technician = data.technician
-    const dataBase = props.dataBase
-
+  const handleUpdate =  async (data) => {
+    const stockCurrent = props.stockCurrent;
+    const id = props.id;
+    const stock = Number(data.stock);
+    const dbName = props.dataBase;
+    const typeMovement = data.movement;
+    const technician = data.technician;
+    
     if (typeMovement === "entrada") {
-      inputStock(dataBase, id, stock, stockCurrent);
+      
+      await inputStock(dbName, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
     } else {
-      outputStock(dataBase, id, stock, stockCurrent);
+      await outputStock(dbName, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
     }
-    setOpen(false);
   }
 
 

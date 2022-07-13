@@ -30,7 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const dataBase = "impressoras";
+const dbName = "impressoras";
 
 export default function TablePrinters(props) {
   return (
@@ -54,7 +54,7 @@ export default function TablePrinters(props) {
               <StyledTableCell align="left">{printer.printer}</StyledTableCell>
               <StyledTableCell align="left">{printer.color}</StyledTableCell>
               <StyledTableCell align="center">{printer.stock}</StyledTableCell>
-              <StyledTableCell align="right"><ButtonUpdate stockCurrent={printer.stock} description={printer.type + printer.color + printer.printer} id={printer.id} dataBase={dataBase}/></StyledTableCell>
+              <StyledTableCell align="right"><ButtonUpdate stockCurrent={printer.stock} description={printer.type + printer.color + printer.printer} id={printer.id} dataBase={dbName}/></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
