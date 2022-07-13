@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { app } from "../../Services/firebaseConfig";
 import Header from "../../Components/Navbar/Navbar";
 import TableStock from "./TableStock";
@@ -11,11 +11,18 @@ export default function Stock() {
 
     const [items, setItems] = useState([]);
 
+    
     useEffect(() => {
-        onSnapshot(collection(db, "estoque"), (data) =>
-            setItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        )
-    }, []);
+        const q = query(collection(db, "estoque"), orderBy("description", "asc"));
+        const search = onSnapshot(q, (snapshot) => {
+            let itemsArray = [];
+            snapshot.forEach((doc) => {
+                itemsArray.push({ ...doc.data(), id: doc.id });
+            });
+            setItems(itemsArray);
+        });
+        return () => search();
+        }, []);
 
     return (
         <Container>

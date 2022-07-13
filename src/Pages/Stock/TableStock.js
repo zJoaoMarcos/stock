@@ -40,9 +40,9 @@ export default function TableStock(props) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Item</StyledTableCell>
-            <StyledTableCell align="right">Tipo</StyledTableCell>
-            <StyledTableCell align="right">Estoque</StyledTableCell>
-            <StyledTableCell align="right">Local</StyledTableCell>
+            <StyledTableCell align="left">Tipo</StyledTableCell>
+            <StyledTableCell align="center">Estoque</StyledTableCell>
+            <StyledTableCell align="center">Local</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
@@ -53,11 +53,11 @@ export default function TableStock(props) {
               <StyledTableCell component="th" scope="row">
                 {item.description}
               </StyledTableCell>
-              <StyledTableCell align="right">{item.type}</StyledTableCell>
-              <StyledTableCell align="right">{item.stock}</StyledTableCell>
-              <StyledTableCell align="right">{item.place}</StyledTableCell>
-              <StyledTableCell align="right"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id}/></StyledTableCell>
-              <StyledTableCell align="right"><ButtonDelete description={item.description} id={item.id} dataBase={dataBase}/></StyledTableCell>
+              <StyledTableCell align="left">{item.type}</StyledTableCell>
+              <StyledTableCell align="center">{item.stock}</StyledTableCell>
+              <StyledTableCell align="center">{item.place}</StyledTableCell>
+              <StyledTableCell align="left"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id}/></StyledTableCell>
+              <StyledTableCell align="left"><ButtonDelete description={item.description} id={item.id} dataBase={dataBase}/></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
