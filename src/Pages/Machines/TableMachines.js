@@ -1,64 +1,111 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import ButtonUpdate from '../../Components/Popup/Update';
-import ButtonDelete from '../../Components/Popup/Delete';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-  },
-}));
+function Row(props) {
+  const { row } = props;
+  const [open, setOpen] = React.useState(false);
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
+  return (
+    <React.Fragment>
+        <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+          <TableCell>
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {row.type}
+          </TableCell>
+          <TableCell align="right">{row.status}</TableCell>
+          <TableCell align="right">{row.hostName}</TableCell>
+          <TableCell align="right">{row.place}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <Box sx={{ margin: 1 }}>
+                <Typography variant="h6" gutterBottom component="div">
+                  Configuração
+                </Typography>
+                <Table size="small" aria-label="purchases">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Processador</TableCell>
+                      <TableCell>Memória</TableCell>
+                      <TableCell align="right">Armazenamento</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                  
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {row.cpu}
+                      </TableCell>
+                      <TableCell>{row.memory}</TableCell>
+                      <TableCell align="right">{row.storage}</TableCell>
+                    </TableRow>
+                </TableBody>
+                </Table>
+              </Box>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+    </React.Fragment>
+  );
+}
 
-const dbName = "machines";
+Row.propTypes = {
+  row: PropTypes.shape({
+    calories: PropTypes.number.isRequired,
+    carbs: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        customerId: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    protein: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
-export default function TableStock(props) {
+export default function CollapsibleTable(props) {
   return (
     <TableContainer component={Paper}>
-      <Table /* sx={{ maxWidth: 1000 }} */ aria-label="customized table">
+      <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Equipamento</StyledTableCell>
-            <StyledTableCell align="center">Status</StyledTableCell>
-            <StyledTableCell align="left">Host Name</StyledTableCell>
-            <StyledTableCell align="center">Local</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <TableCell />
+            <TableCell>Equipamento</TableCell>
+            <TableCell align="right">Status</TableCell>
+            <TableCell align="right">Host Name</TableCell>
+            <TableCell align="right">Local</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.items.map((item) => (
-            <StyledTableRow key={item.id}>
-              <StyledTableCell component="th" scope="row">
-                {item.type}
-              </StyledTableCell>
-              <StyledTableCell align="center">{item.status}</StyledTableCell>
-              <StyledTableCell align="left">{item.hostName}</StyledTableCell>
-              <StyledTableCell align="center">{item.place}</StyledTableCell>
-              <StyledTableCell align="left"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id} dataBase={dbName} /></StyledTableCell>
-              <StyledTableCell align="left"><ButtonDelete description={item.description} id={item.id}/></StyledTableCell>
-            </StyledTableRow>
+          {props.items.map((row) => (
+            <Row key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>
