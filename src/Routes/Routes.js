@@ -4,7 +4,6 @@ import {
     Route
  } from 'react-router-dom';
 import Login from '../Pages/Login/Login';
-import Home from '../Pages/Home/Home';
 import Register from '../Pages/Register/Register';
 import Stock from  '../Pages/Stock/Stock';
 import Shop from  '../Pages/Shop/Shop';
@@ -18,9 +17,6 @@ export default function MainRoutes() {
         <Routes>
             <Fragment>    
                 <Route path="/" element={<Login />} />
-                <Route path="/home" element={<PrivateRoutes />}>
-                    <Route path="/home" element={<Home />} />
-                </Route>
                 <Route path="/register" element={<PrivateRoutes />}>
                     <Route path="/register" element={<Register />} />
                 </Route>

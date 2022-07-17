@@ -26,7 +26,7 @@ export const AuthLoginProvider = ({ children }) => {
         const user = userCredential.user;
         setUser(user)
         sessionStorage.setItem("@AuthFirebase:user", JSON.stringify(user));
-        <Navigate to="/home"/>
+        <Navigate to="/stock"/>
     })
     .catch((error) => {
         const errorCode = error.code;

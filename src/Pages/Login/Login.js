@@ -23,6 +23,6 @@ export default function Login() {
       </div>
     );
   } else {
-    return <Navigate to="/home" />
+    return <Navigate to="/stock" />
   }
 };
