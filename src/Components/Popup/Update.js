@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ImportExportRoundedIcon from '@mui/icons-material/ImportExportRounded';
 import IconButton from '@mui/material/IconButton';
+import { red } from '@mui/material/colors';
 
 import { Form } from './Style';
 import Input from '../Form/Input';
@@ -28,8 +29,8 @@ export default function ButtonUpdate(props) {
   };
 
   const selectOptions = [
-    { value: 'entrada', label: 'Entrada' },
-    { value: 'saida', label: 'Saída' }
+    { value: 'Entrada', label: 'Entrada' },
+    { value: 'Saida', label: 'Saída' }
   ]
 
   const handleUpdate =  async (data) => {
@@ -40,7 +41,7 @@ export default function ButtonUpdate(props) {
     const typeMovement = data.movement;
     const technician = data.technician;
     
-    if (typeMovement === "entrada") {
+    if (typeMovement === "Entrada") {
       
       await inputStock(dbName, id, stock, stockCurrent);
       movement(props.description, stock, typeMovement, technician)
@@ -83,7 +84,7 @@ export default function ButtonUpdate(props) {
           </Form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose} sx={{ color: red[700] }}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </div>

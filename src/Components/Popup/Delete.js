@@ -45,15 +45,15 @@ export default function ButtonDelete(props) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Alerta"}</DialogTitle>
+        <DialogTitle color="error">{"Alerta"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Tem certeza que quer excluir o {props.description}
+            Tem certeza que deseja excluir: <b>{props.description}</b>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDelete}>Deletar</Button>
-          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={handleDelete} sx={{ color: red[700] }}>Deletar</Button>
+          <Button onClick={handleClose} color="info">Cancelar</Button>
         </DialogActions>
       </Dialog>
     </div>

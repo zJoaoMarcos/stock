@@ -4,12 +4,11 @@ import { Form as Unform } from '@unform/web';
 export const Form = styled(Unform)`
     background-color: white;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: space-evenly;
-    border-radius: 10px;
     width: 100%;
-    height: 350px;
+    height: 320px;
 
     h2 {
         color: #9c000d;
@@ -18,7 +17,7 @@ export const Form = styled(Unform)`
 
     Input {
         height: 30px;
-        width: 80%;
+        width: 100%;
         margin-bottom: 25px;
         font-size: 1em;
         border: none;
@@ -37,9 +36,15 @@ export const Form = styled(Unform)`
         font-size: 1em;
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     margin: 0;
+    }
+
     Select {
         height: 30px;
-        width: 166px;
+        width: 255%;
         margin-bottom: 25px;
         font-size: 1em;
         border: none;
@@ -58,7 +63,7 @@ export const Form = styled(Unform)`
 
     button {
         height: 40px;
-        width: 80%;
+        width: 100%;
         border-radius: 10px;
         border-style: none;
         background-color: #9c000d;

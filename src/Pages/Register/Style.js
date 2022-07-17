@@ -67,6 +67,12 @@ export const Form = styled(Unform)`
         font-size: 1em;
     }
 
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
     button {
         height: 40px;
         width: 80%;

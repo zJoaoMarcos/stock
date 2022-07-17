@@ -3,12 +3,13 @@ import { getFirestore, collection, onSnapshot, query, orderBy } from "firebase/f
 import { app } from "../../Services/firebaseConfig";
 import Header from "../../Components/Navbar/Navbar";
 import TableStock from "./TableStock";
-import { Container } from "./Style";
+import { useNavigate } from "react-router-dom";
+import { Container, Button } from "./Style";
 
 export default function Stock() {
 
     const db = getFirestore(app);
-
+    const navigate = useNavigate();
     const [items, setItems] = useState([]);
 
     
@@ -28,6 +29,8 @@ export default function Stock() {
         <Container>
             <Header />
             <h1>Estoque</h1>
+
+            <Button onClick={() => navigate('/register')}>Registrar</Button>
 
             <div>
                 
