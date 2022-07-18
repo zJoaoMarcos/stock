@@ -31,12 +31,12 @@ function Row(props) {
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </TableCell>
-          <TableCell component="th" scope="row">
+          <TableCell component="th" scope="row" align="center">
             {row.type}
           </TableCell>
-          <TableCell align="right">{row.status}</TableCell>
-          <TableCell align="right">{row.hostName}</TableCell>
-          <TableCell align="right">{row.place}</TableCell>
+          <TableCell align="center">{row.status}</TableCell>
+          <TableCell align="center">{row.hostName}</TableCell>
+          <TableCell align="center">{row.place}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -50,17 +50,19 @@ function Row(props) {
                     <TableRow>
                       <TableCell>Processador</TableCell>
                       <TableCell>Memória</TableCell>
-                      <TableCell align="right">Armazenamento</TableCell>
+                      <TableCell align="center">Armazenamento</TableCell>
+                      <TableCell align="center">Placa de Video</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                   
                     <TableRow key={row.id}>
-                      <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row" align="center">
                         {row.cpu}
                       </TableCell>
-                      <TableCell>{row.memory}</TableCell>
-                      <TableCell align="right">{row.storage}</TableCell>
+                      <TableCell align="center">{row.memory}</TableCell>
+                      <TableCell align="center">{row.storage}</TableCell>
+                      <TableCell align="center">{row.graphicsCards}</TableCell>
                     </TableRow>
                 </TableBody>
                 </Table>
@@ -72,7 +74,7 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
+/* Row.propTypes = {
   row: PropTypes.shape({
     calories: PropTypes.number.isRequired,
     carbs: PropTypes.number.isRequired,
@@ -88,7 +90,7 @@ Row.propTypes = {
     price: PropTypes.number.isRequired,
     protein: PropTypes.number.isRequired,
   }).isRequired,
-};
+}; */
 
 export default function CollapsibleTable(props) {
   return (
@@ -97,10 +99,10 @@ export default function CollapsibleTable(props) {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Equipamento</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Host Name</TableCell>
-            <TableCell align="right">Local</TableCell>
+            <TableCell align="left">Equipamento</TableCell>
+            <TableCell align="center">Status</TableCell>
+            <TableCell align="center">Host Name</TableCell>
+            <TableCell align="center">Local</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

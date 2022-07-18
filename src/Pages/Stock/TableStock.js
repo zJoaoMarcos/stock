@@ -36,7 +36,7 @@ const dbName = "estoque";
 export default function TableStock(props) {
   return (
     <TableContainer component={Paper}>
-      <Table /* sx={{ maxWidth: 1000 }} */ aria-label="customized table">
+      <Table sx={{ maxWidth: 1000 }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Item</StyledTableCell>

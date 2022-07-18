@@ -27,6 +27,19 @@ export const StockProvider = ({ children }) => {
         await updateDoc(itemDoc, newItems);
     };
 
+    const registerMachines = async (cpu, hostName, memory, place, status, storage, type, graphicsCards) => {
+        await addDoc(collection(db, "maquinas"), {
+            cpu: cpu,
+            hostName: hostName,
+            memory: memory,
+            place: place,
+            status: status,
+            storage: storage,
+            type: type,
+            graphicsCards: graphicsCards
+        });
+    }
+
     
 
     const movement = async (currentItem, quantity, movement, technician) => {
@@ -49,6 +62,7 @@ export const StockProvider = ({ children }) => {
                 outputStock,
                 movement,
                 deleteItem,
+                registerMachines,
             }}
         >
             {children}    

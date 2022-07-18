@@ -4,11 +4,11 @@ import { app } from "../../Services/firebaseConfig";
 import Header from "../../Components/Navbar/Navbar";
 import TableMachines from "./TableMachines";
 import { Container } from "./Style";
+import RegisterDialog from "./RegisterButton/Index";
 
 export default function Machines() {
 
     const db = getFirestore(app);
-
     const [items, setItems] = useState([]);
 
     
@@ -28,7 +28,8 @@ export default function Machines() {
         <Container>
             <Header />
             <h1>Inventário de Máquinas</h1>
-
+            <RegisterDialog />
+            
             <div>
                 
                 <TableMachines items={items}/>
