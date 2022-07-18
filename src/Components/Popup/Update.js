@@ -32,6 +32,30 @@ export default function ButtonUpdate(props) {
     { value: 'Entrada', label: 'Entrada' },
     { value: 'Saida', label: 'Saída' }
   ]
+  
+  const selectDepartament = [
+    { value: 'Recursos Humanos', label: 'Recursos Humanos' },
+    { value: 'Suprimentos', label: 'Suprimentos' },
+    { value: 'Orçamentos', label: 'Orçamentos' },
+    { value: 'Aprovações', label: 'Aprovações' },
+    { value: 'Novos Negócios', label: 'Novos Negócios' },
+    { value: 'Stand & Decorado', label: 'Stand & Decorado' },
+    { value: 'Júridico', label: 'Júridico' },
+    { value: 'Controladoria', label: 'Controladoria' },
+    { value: 'Contas a Pagar', label: 'Contas a Pagar' },
+    { value: 'Contas a Receber', label: 'Contas a Receber' },
+    { value: 'Obra', label: 'Obra' },
+    { value: 'Instalações', label: 'Instalações' },
+    { value: 'Área Comum', label: 'Área Comum' },
+    { value: 'Governança Corporativa', label: 'Governança Corporativa' },
+    { value: 'Projetos', label: 'Projetos' },
+    { value: 'Produtos', label: 'Produtos' },
+    { value: 'Comercial', label: 'Comercial' },
+    { value: 'Tecnologia da Informação', label: 'Tecnologia da Informação' },
+    { value: 'Facilities', label: 'Facilities' },
+    { value: 'Decora', label: 'Decora' },
+
+  ]
 
   const handleUpdate =  async (data) => {
     const stockCurrent = props.stockCurrent;
@@ -40,14 +64,16 @@ export default function ButtonUpdate(props) {
     const dbName = props.dataBase;
     const typeMovement = data.movement;
     const technician = data.technician;
+    const requester = data.requester;
+    const departament = data.departament;
     
     if (typeMovement === "Entrada") {
       
       await inputStock(dbName, id, stock, stockCurrent);
-      movement(props.description, stock, typeMovement, technician)
+      movement(props.description, stock, typeMovement, technician, departament, requester)
     } else {
       await outputStock(dbName, id, stock, stockCurrent);
-      movement(props.description, stock, typeMovement, technician)
+      movement(props.description, stock, typeMovement, technician, departament, requester)
     }
     setOpen(false);
   }
@@ -63,17 +89,28 @@ export default function ButtonUpdate(props) {
         <DialogTitle>Movimento</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {props.description}
+            <b>{props.description}</b>
           </DialogContentText>
           <Form onSubmit={handleUpdate}>
             <Input name="stock" type="number" required placeholder="Quantidade" />
-            <Input name="technician" type="text" required placeholder="Técnico" />
-
             <Select
               name="movement"
               label="Tipo de Movimento"
               options={selectOptions} >
               {selectOptions.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+            <Input name="technician" type="text" required placeholder="Técnico" />
+            <Input name="requester" type="text" required placeholder="Solicitante/Fornecedor" />
+
+            <Select
+              name="departament"
+              label="Departamento"
+              options={selectDepartament} >
+              {selectDepartament.map(option => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>

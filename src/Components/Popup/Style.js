@@ -8,7 +8,8 @@ export const Form = styled(Unform)`
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
-    height: 320px;
+    height: 390px;
+    padding-top: 15px;
 
     h2 {
         color: #9c000d;
@@ -44,7 +45,7 @@ export const Form = styled(Unform)`
 
     Select {
         height: 30px;
-        width: 255%;
+        width: 31.1rem;
         margin-bottom: 25px;
         font-size: 1em;
         border: none;

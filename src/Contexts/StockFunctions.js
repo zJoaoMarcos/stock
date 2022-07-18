@@ -42,7 +42,7 @@ export const StockProvider = ({ children }) => {
 
     
 
-    const movement = async (currentItem, quantity, movement, technician) => {
+    const movement = async (currentItem, quantity, movement, technician, departament, resquester) => {
         
         const currentDate = new Date().toLocaleDateString();
         
@@ -51,7 +51,9 @@ export const StockProvider = ({ children }) => {
             item: currentItem,
             quantity: quantity,
             movement: movement,
-            technician: technician
+            technician: technician,
+            departament: departament,
+            requester: resquester
         });
     }
     

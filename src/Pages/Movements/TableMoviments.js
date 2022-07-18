@@ -47,7 +47,7 @@ export default function TableMoviments(props) {
               <StyledTableCell component="th" scope="row">
                 {movement.date}
               </StyledTableCell>
-              <StyledTableCell align="center">{movement.movement}</StyledTableCell>
+              <StyledTableCell align="left">{movement.movement}</StyledTableCell>
               <StyledTableCell align="left">{movement.item}</StyledTableCell>
               <StyledTableCell align="center">{movement.quantity}</StyledTableCell>
               <StyledTableCell align="center">{movement.technician}</StyledTableCell>
