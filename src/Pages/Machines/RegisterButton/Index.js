@@ -144,7 +144,6 @@ export default function RegisterDialog() {
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Subscribe</Button>
             </DialogActions>
         </Dialog>
         </div >

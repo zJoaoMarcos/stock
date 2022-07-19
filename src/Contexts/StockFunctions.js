@@ -40,7 +40,19 @@ export const StockProvider = ({ children }) => {
         });
     }
 
-    
+    const editItem = async (id, type, description, stock, stockMin, place) => {
+        const itemDoc = doc(db, 'estoque', id)
+
+        const newItems = {
+            description: description,
+            stock: stock,
+            stockMin: stockMin,
+            place: place,
+            type: type
+        }
+
+        await updateDoc(itemDoc, newItems);
+    } 
 
     const movement = async (currentItem, quantity, movement, technician, departament, resquester) => {
         
@@ -65,6 +77,7 @@ export const StockProvider = ({ children }) => {
                 movement,
                 deleteItem,
                 registerMachines,
+                editItem,
             }}
         >
             {children}    

@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import ButtonEdit from './ButtonEdit/Index';
 import ButtonUpdate from '../../Components/Popup/Update';
 import ButtonDelete from '../../Components/Popup/Delete';
 
@@ -45,6 +46,7 @@ export default function TableStock(props) {
             <StyledTableCell align="center">Local</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -56,6 +58,7 @@ export default function TableStock(props) {
               <StyledTableCell align="left">{item.type}</StyledTableCell>
               <StyledTableCell align="center">{item.stock}</StyledTableCell>
               <StyledTableCell align="center">{item.place}</StyledTableCell>
+              <StyledTableCell align="left"><ButtonEdit description={item.description} type={item.type} stock={item.stock} stockMin={item.stockMin} id={item.id} place={item.place}/></StyledTableCell>
               <StyledTableCell align="left"><ButtonUpdate stockCurrent={item.stock} description={item.description} id={item.id} dataBase={dbName} /></StyledTableCell>
               <StyledTableCell align="left"><ButtonDelete description={item.description} id={item.id}/></StyledTableCell>
             </StyledTableRow>
