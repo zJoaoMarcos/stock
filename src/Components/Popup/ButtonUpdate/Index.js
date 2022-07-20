@@ -11,9 +11,9 @@ import IconButton from '@mui/material/IconButton';
 import { red } from '@mui/material/colors';
 
 import { Form } from './Style';
-import Input from '../Form/Input';
-import Select from '../Form/Select';
-import { StockContext } from '../../Contexts/StockFunctions';
+import Input from '../../Form/Input';
+import Select from '../../Form/Select';
+import { StockContext } from '../../../Contexts/StockFunctions';
 
 export default function ButtonUpdate(props) {
   const [open, setOpen] = React.useState(false);
@@ -81,7 +81,7 @@ export default function ButtonUpdate(props) {
 
   return (
     <div>
-      <IconButton aria-label="delete" onClick={handleClickOpen} size="small">
+      <IconButton aria-label="update" onClick={handleClickOpen} size="small">
         <ImportExportRoundedIcon />
       </IconButton>
       

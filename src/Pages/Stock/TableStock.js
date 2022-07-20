@@ -9,8 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import ButtonEdit from './ButtonEdit/Index';
-import ButtonUpdate from '../../Components/Popup/Update';
-import ButtonDelete from '../../Components/Popup/Delete';
+import ButtonUpdate from '../../Components/Popup/ButtonUpdate/Index';
+import ButtonDelete from '../../Components/Popup/ButtonDelete/Index';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

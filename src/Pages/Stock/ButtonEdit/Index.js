@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 import { Form } from './Style';
 import Input from '../../../Components/Form/Input';
@@ -37,8 +37,8 @@ export default function RegisterDialog(props) {
 
     return (
         <div>
-            <IconButton aria-label="delete" onClick={handleClickOpen} size="small">
-                <EditIcon />
+            <IconButton aria-label="edit" onClick={handleClickOpen} size="small">
+                <EditRoundedIcon />
             </IconButton>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Editar: <b>{props.description}</b> </DialogTitle>

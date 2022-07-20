@@ -10,7 +10,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { red } from '@mui/material/colors';
-import { StockContext } from '../../Contexts/StockFunctions';
+import { StockContext } from '../../../Contexts/StockFunctions';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
